@@ -15,6 +15,7 @@ A, B = input().split()
 print(int(A)+int(B))
 
 # 주석과 답의 차이점은?
+#split -> 문자열 함수 / 따라서 int형으로 재지정 필요
 
 # 9 사칙연산
 a, b = map(int, input().split()) # map 함수는 결과 모두 int형으로 반환해라 라는 뜻
@@ -25,7 +26,7 @@ print(a//b) # 몫 부분만
 print(a % b) # 나머지
 
 # 10
-A, B, C = map(int, input().split())
+A, B, C = map(int, input().split()) #
 print((A+B) % C)
 print(((A % C) + (B % C)) % C)
 print((A * B) % C)
@@ -45,5 +46,3 @@ print(a*(b%10))
 print(a*int((b%100-b%10)/10))
 print(a*(b//100))
 print(a*b)
-
-#제발pr돼라
