@@ -32,11 +32,8 @@ def solution(new_id: str) -> str:
                 answer = ''
             else:
                 answer = answer[:-1]
-    elif len(answer) == 1:
-        if answer[0] == '.':
-            answer = ''
-        elif answer[-1] == '.':
-            answer = ''
+    elif answer and answer[0] == '.':
+        answer = ''
 
     #   st = 'a' if len(st) == 0 else st[:15]
     #   st = re.sub('^[.]|[.]$', '', st)
@@ -52,9 +49,8 @@ def solution(new_id: str) -> str:
 
     #   st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
     # Level_7
-    if len(answer) < 3:
+    while len(answer) < 3:
         last = answer[-1]
-        while len(answer) != 3:
-            answer += last
+        answer += last
 
     return answer
