@@ -45,3 +45,4 @@ print(a * (b%10))
 print(a * int((b%100-b%10) / 10))
 print(a * (b//100))
 print(a * b)
+# 이항 어쩌구 수정
