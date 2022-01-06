@@ -15,6 +15,7 @@ A, B = input().split()
 print(int(A)+int(B))
 
 # 주석과 답의 차이점은?
+#split -> 문자열 함수 / 따라서 int형으로 재지정 필요
 
 # 9 사칙연산
 a, b = map(int, input().split()) # map 함수는 결과 모두 int형으로 반환해라 라는 뜻
