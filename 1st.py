@@ -41,9 +41,7 @@ print(((A % C) * (B % C)) % C)
 
 a = int(input())
 b = int(input())
-print(a*(b%10))
-print(a*int((b%100-b%10)/10))
-print(a*(b//100))
-print(a*b)
-
-#제발pr돼라
+print(a * (b%10))
+print(a * int((b%100-b%10) / 10))
+print(a * (b//100))
+print(a * b)
