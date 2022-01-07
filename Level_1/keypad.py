@@ -3,23 +3,26 @@ loc = {1: [0, 0], 2: [0, 1], 3: [0, 2],
        7: [2, 0], 8: [2, 1], 9: [2, 2],
        '*': [3, 0], 0: [3, 1], '#': [3, 2]}
 
-def distance(left, right, loc_go, hand):
-    left_dis = 0
-    right_dis = 0
+LEFT = True
+RIGHT = False
+
+def is_left(left, right, loc_go, hand) -> bool:
+    left_distance = 0
+    right_distance = 0
 
     for i, j, k in zip(left, right, loc_go):
-        left_dis += abs(i-k)
-        right_dis += abs(j-k)
+        left_distance += abs(i-k)
+        right_distance += abs(j-k)
 
-    if left_dis < right_dis:
-        return True
-    elif right_dis < left_dis:
-        return False
-    else:
+    if left_distance == right_distance:
         if hand == 'left':
             return True
         else:
             return False
+    elif left_distance < right_distance:
+        return True
+    else:
+        return False
 
 def solution(numbers: list, hand: str) -> str:
     answer = ''
@@ -37,7 +40,7 @@ def solution(numbers: list, hand: str) -> str:
             answer += 'R'
             right_hand = loc_go
         else:
-            if distance(left_hand, right_hand, loc_go, hand):
+            if is_left(left_hand, right_hand, loc_go, hand):
                 answer += 'L'
                 left_hand = loc_go
             else:

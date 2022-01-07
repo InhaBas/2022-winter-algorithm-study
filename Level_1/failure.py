@@ -1,4 +1,4 @@
-def solution(N, stages):
+def solution(N: int, stages: list) -> list:
     arr = []
     clear = 0
     for i in range(N, -1, -1):
@@ -13,5 +13,6 @@ def solution(N, stages):
 
     dic = {i + 1: arr[i] for i in range(N)}
     answer = sorted(dic.items(), key=lambda x: x[1], reverse=True)
-    answer = [i for i,j in answer]
+    answer = [i for i, j in answer]
+
     return answer
