@@ -1,67 +1,54 @@
-#include <cstring>
+#include <sstream>
 #include <string>
 #include <cmath>
-#include <regex>
 
-#define EMPTY ' '
 using namespace std;
 
-int score[4] = {-1, -1, -1, -1};
-char bonus[4] = {EMPTY, EMPTY, EMPTY, EMPTY};
-char option[4] = {EMPTY, EMPTY, EMPTY, EMPTY};
+int sum[4] = {-1, -1, -1, -1};
 
-void parse(string dartResult) {
-    int cnt = 0;
-    for (auto& ch: dartResult) {
-        
-        if (isdigit(ch)){
-            cnt += 1;
-            score[cnt] = ch - '0';
-        }
-        else if (strchr("x", ch)) { // 10인 경우
-            cnt += 1;
-            score[cnt] = 10;
-        }
-        else if (strchr("SDT", ch)){
-            bonus[cnt] = ch;
-        }
-        else {
-            option[cnt] = ch;
-        }
-    }
-
-}
 
 int solution(string dartResult) {
-    dartResult = regex_replace(dartResult, regex("10"), "x");
-
-    parse(dartResult);
+    stringstream ss(dartResult);
     
     for (int currentRound = 1; currentRound <=3; currentRound++) {
+        int score;
+        char bonus, option;
         
-        switch (bonus[currentRound]){
+        ss >> score;
+
+        bonus = ss.get();
+        option = ss.get();
+
+        if (option != '*' && option != '#') {
+            ss.unget();
+        }
+        
+        switch (bonus){
+            case 'S':
+                sum[currentRound] = score;
+                break;
             case 'D':
-                score[currentRound] = pow(score[currentRound], 2);
+                sum[currentRound] = pow(score, 2);
                 break;
             case 'T':
-                score[currentRound] = pow(score[currentRound], 3);
+                sum[currentRound] = pow(score, 3);
                 break;
         } 
         
-        switch (option[currentRound]){
+        switch (option){
             case '*':
-                score[currentRound] *= 2;
+                sum[currentRound] *= 2;
                 if (currentRound > 0) 
-                    score[currentRound - 1] *= 2;
+                    sum[currentRound - 1] *= 2;
                 break;
             case '#':
-                score[currentRound] *= -1;
+                sum[currentRound] *= -1;
                 break;
-            case EMPTY:
+            default:
                 break;
         } 
     }
 
-    int answer = score[1] + score[2] + score[3];
+    int answer = sum[1] + sum[2] + sum[3];
     return answer;
 }
