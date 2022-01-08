@@ -68,5 +68,4 @@ four = A * ((B%100)//10)
 five = A * (B//100)
 six = A * B
 print(three, four, five, six, sep='\n')
-
 print(next)
