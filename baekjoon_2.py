@@ -28,3 +28,36 @@ else:
 
 #3
 
+A = int(input())
+
+if A // 4 == 0 and A % 100 !=0:
+    print('1')
+elif A // 400 == 0:
+    print('1')
+else:
+    print('0')
+
+#4
+
+x, y = map(int, input().split())
+# 솔직히 map 함수의 사용법을 아직 잘 모르겠습니다. int(input())을 x,y에 두 줄에 걸쳐 할당하는게 더 직관적이긴 하나 map 함수를 이용하는게 더 깔끔해 보입니다.
+
+if x > 0 and y > 0:
+    print("1")
+elif x < 0 < y:
+    print('2')
+elif x < 0 and y < 0:
+    print('3')
+else:
+    print('4')
+
+#5
+
+H, M = map(int, input().split())
+
+if M >= 45:
+    print(H, M - 45)
+elif H == 0:
+    print(23, 60 + (M - 45))
+else:
+    print(H-1, 60 + (M - 45))
