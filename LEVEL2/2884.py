@@ -1,8 +1,8 @@
 h, m = map(int, input().split())
 
-if m > 44:
+if m >= 45:
     print(h, m - 45)
-elif (m < 45) and (h > 0):
+elif h > 0:
     print(h - 1, 15 + m) # 45분보다 작으면 시에서 1을 빼야함
 else:
     print(23, 15 + m) # 0시일 때 가정. 45분보다 작아 시에서 1을 빼야하므로 23시라 두었음.
