@@ -1,4 +1,4 @@
-def solution(board, moves):
+def solution(board: list, moves: list) -> int:
     answer = 0
     arr = []
     bucket = []
