@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <map>
 using namespace std;
 
@@ -31,29 +32,6 @@ static bool validate(vector<string>& data, string& line) {
     return true;
 }
 
-static void jul_Seo(string& currentLine, string& friends, map<char, bool>& visited, vector<string>& data, int& answer) {
-    
-    // 모든 카카오프렌즈가 줄을 다 섰을 경우 (terminal case)
-    if (currentLine.length() == 8) { 
-        if (validate(data, currentLine)) {
-            answer += 1;
-        }
-        return;
-    }
-    
-    for (auto& ch: friends) {
-        if (!visited[ch]) {
-            visited[ch] = true;
-            currentLine += ch;
-            
-            jul_Seo(currentLine, friends, visited, data, answer);
-            
-            currentLine.pop_back();
-            visited[ch] = false;
-        }
-    }
-} 
-
 static map<char, bool> visited = {
     {'A', false},
     {'C', false},
@@ -72,8 +50,10 @@ int solution(int n, vector<string> data) {
     string friends = "ACFJMNRT";
     string currentLine = "";
     
-    jul_Seo(currentLine, friends, visited, data, answer);
+    do {
+        if (validate(data, friends)) answer += 1;
+    } while(next_permutation(friends.begin(), friends.end()));  // 허허 이런게 있네요
+    
     
     return answer;
 }
-
