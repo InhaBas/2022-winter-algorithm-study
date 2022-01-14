@@ -1,4 +1,4 @@
-# 4344 - 평균은 넘겠지...
+# 4344 - 평균은 넘겠지... 1회 수정
 
 import statistics
 
@@ -19,3 +19,4 @@ for i in range(num):
     per = cnt / score[0] * 100
 
     print(round(per, 3), '%')
+    # 또는 f 스트링 사용시 f'{per: .3f} %' 로 나타낼 수도 있을 것 같습니다.
