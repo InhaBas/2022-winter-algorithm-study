@@ -20,7 +20,7 @@ for i in range(t):
         if minus == n ** 2:  # 거리가 제곱수라면
             print(2 * n - 1)
 
-        elif n ** 2 < minus <= n ** 2 + n #제곱수는 아닌데 제곱수 + 제곱근 이하의 거리라면
+        elif n ** 2 < minus <= n ** 2 + n: #제곱수는 아닌데 제곱수 + 제곱근 이하의 거리라면
             print(2 * n)
 
         else: #제곱수 +제곱근 이상이면서 또 다른 제곱수의 이하일때
